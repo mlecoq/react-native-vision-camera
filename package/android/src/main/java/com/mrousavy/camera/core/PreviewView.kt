@@ -101,11 +101,11 @@ class PreviewView(context: Context, callback: SurfaceHolder.Callback) :
 
     return if (widthOverHeight) {
       // Scale by width to cover height
-      val scaledWidth = containerSize.height * contentAspectRatio
+      val scaledWidth = containerSize.height.toDouble() / contentSize.height  * contentSize.width
       Size(scaledWidth.roundToInt(), containerSize.height)
     } else {
       // Scale by height to cover width
-      val scaledHeight = containerSize.width / contentAspectRatio
+      val scaledHeight = containerSize.width.toDouble() / contentSize.width * contentSize.height
       Size(containerSize.width, scaledHeight.roundToInt())
     }
   }
